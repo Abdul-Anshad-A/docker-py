@@ -196,6 +196,16 @@ class HostConfigTest(base.BaseTestCase):
         with pytest.raises(TypeError):
             create_host_config(version='1.22', pids_limit='1024')
 
+    def test_create_host_config_with_pid_mode(self):
+        self.assertRaises(
+            ValueError,
+            lambda: create_host_config(version='1.23', pid_mode='ctnr1')
+        )
+        config = create_host_config(version='1.23', pid_mode='host')
+        assert config['PidMode'] == 'host'
+        config = create_host_config(version='1.24', pid_mode='container1')
+        assert config['PidMode'] == 'container1'
+
 
 class UlimitTest(base.BaseTestCase):
     def test_create_host_config_dict_ulimit(self):
