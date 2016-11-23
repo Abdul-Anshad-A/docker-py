@@ -1,19 +1,19 @@
-Client
-======
+DockerClient
+============
 .. py:module:: docker.client
 
 
 Creating a client
 -----------------
 
-To communicate with the Docker daemon, you first need to instantiate a client. The easiest way to do that is by calling the function :py:func:`~docker.client.from_env`. It can also be configured manually by instantiating a :py:class:`~docker.client.Client` class.
+To communicate with the Docker daemon, you first need to instantiate a client. The easiest way to do that is by calling the function :py:func:`~docker.client.from_env`. It can also be configured manually by instantiating a :py:class:`~docker.client.DockerClient` class.
 
 .. autofunction:: from_env()
 
 Client reference
 ----------------
 
-.. autoclass:: Client()
+.. autoclass:: DockerClient()
 
   .. autoattribute:: containers
   .. autoattribute:: images

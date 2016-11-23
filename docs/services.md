@@ -6,7 +6,7 @@ using the Docker Engine API. Note that the engine needs to be part of a
 
 ## Creating a service
 
-The `Client.create_service` method lets you create a new service inside the
+The `APIClient.create_service` method lets you create a new service inside the
 cluster. The method takes several arguments, `task_template` being mandatory.
 This dictionary of values is most easily produced by instantiating a
 `TaskTemplate` object.
@@ -21,7 +21,7 @@ service_id = client.create_service(task_tmpl, name=name)
 
 ## Listing services
 
-List all existing services using the `Client.services` method.
+List all existing services using the `APIClient.services` method.
 
 ```python
 client.services(filters={'name': 'mysql'})
@@ -30,7 +30,7 @@ client.services(filters={'name': 'mysql'})
 ## Retrieving service configuration
 
 To retrieve detailed information and configuration for a specific service, you
-may use the `Client.inspect_service` method using the service's ID or name.
+may use the `APIClient.inspect_service` method using the service's ID or name.
 
 ```python
 client.inspect_service(service='my_service_name')
@@ -38,9 +38,9 @@ client.inspect_service(service='my_service_name')
 
 ## Updating service configuration
 
-The `Client.update_service` method lets you update a service's configuration.
+The `APIClient.update_service` method lets you update a service's configuration.
 The mandatory `version` argument (used to prevent concurrent writes) can be
-retrieved using `Client.inspect_service`.
+retrieved using `APIClient.inspect_service`.
 
 ```python
 container_spec = docker.types.ContainerSpec(
@@ -57,7 +57,7 @@ client.update_service(
 
 ## Removing a service
 
-A service may be removed simply using the `Client.remove_service` method.
+A service may be removed simply using the `APIClient.remove_service` method.
 Either the service name or service ID can be used as argument.
 
 ```python
@@ -66,7 +66,7 @@ client.remove_service('my_service_name')
 
 ## Service API documentation
 
-### Client.create_service
+### APIClient.create_service
 
 Create a service.
 
@@ -87,7 +87,7 @@ Create a service.
 
 **Returns:** A dictionary containing an `ID` key for the newly created service.
 
-### Client.inspect_service
+### APIClient.inspect_service
 
 Return information on a service.
 
@@ -97,7 +97,7 @@ Return information on a service.
 
 **Returns:** `True` if successful. Raises an `APIError` otherwise.
 
-### Client.remove_service
+### APIClient.remove_service
 
 Stop and remove a service.
 
@@ -107,7 +107,7 @@ Stop and remove a service.
 
 **Returns:** `True` if successful. Raises an `APIError` otherwise.
 
-### Client.services
+### APIClient.services
 
 List services.
 
@@ -118,7 +118,7 @@ List services.
 
 **Returns:** A list of dictionaries containing data about each service.
 
-### Client.update_service
+### APIClient.update_service
 
 Update a service.
 
